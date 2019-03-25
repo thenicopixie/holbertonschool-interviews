@@ -33,6 +33,13 @@
 - Get to access to dictionary value by key
 - Code is not be executed when imported (by using `if name == “main”:`)
 
+---
+File | Description
+-----|-------------
+0-binary.c | A function that searches for a value in a sorted array of integers using the `Binary search algorithm`
+1-dictionary_of_list_of_dictionaries.py | Extend a Python script to export data in the JSON format.
+2-binary_tree_is_full.c | A function that checks if a binary tree is full
+
 #### Author
 
 Nicole Swanson - [@Nicolette_Swan](https://twitter.com/Nicolette_Swan)
