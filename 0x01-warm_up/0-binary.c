@@ -21,34 +21,39 @@ void print_array(size_t left, size_t right, int *array)
 }
 
 /**
- * binary_search - search for value in sorted array using binary search
+ * binary_recurse - function to search for value in sorted array
  * @array: array to search in
- * @size: the size of the array
- * @value: value to search for in the array
- * Return: index of value if found, else -1
+ * @l: start index of sub array
+ * @r: end index of sub array
+ * @value: value to search for
+ * Return: index of found value or -1
+ */
+int binary_recurse(int *array, size_t l, size_t r, int value)
+{
+	size_t mid = (l + r) / 2;
+
+	if (l > r)
+		return (-1);
+	print_array(l, r, array);
+	if (array[mid] > value)
+		return (binary_recurse(array, l, mid, value));
+	else if (array[mid] < value)
+		return (binary_recurse(array, mid + 1, r, value));
+	else
+		return (mid);
+}
+
+/**
+ * binary_search - search for value in array, calls recursive helper function
+ * @array: array to search in
+ * @size: size of the array
+ * @value: value to search for
+ * Return: index of value or -1
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t left = 0, right = size - 1, mid;
-
 	if (array == NULL)
 		return (-1);
 
-	while (left <= right)
-	{
-		mid = (left + right) / 2;
-		if (array[mid] < value)
-		{
-			print_array(left, right, array);
-			left = mid + 1;
-		}
-		else if (array[mid] > value)
-		{
-			print_array(left, right, array);
-			right = mid - 1;
-		}
-		else
-			return (mid);
-	}
-	return (-1);
+	return (binary_recurse(array, 0, size - 1, value));
 }
